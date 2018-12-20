@@ -7,7 +7,9 @@
   "engines": {
     "node": ">=6.13.0"
   },
-  "scripts": {},
+  "scripts": {
+    "seed": "node seed.js"
+  },
   "dependencies": {
     "faker": "^4.1.0",
     "mysql": "^2.16.0"

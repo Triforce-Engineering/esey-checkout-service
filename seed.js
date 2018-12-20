@@ -25,9 +25,7 @@ for (var i = 0; i < 100; i++) {
   connection.query(`INSERT INTO items (name, price, stock, onList, rating, numOfRatings, relatedItems, img_url) values ('${name}', ${price}, ${stock}, ${onList}, ${rating}, ${numOfRatings}, '${relatedItems}', '${img_url}')`, (err) => {
     if (err) {
       console.error(err);
-    } else {
-      console.log('seeded!');
-    }
+    } 
   })
 }
 
