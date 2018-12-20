@@ -23,6 +23,3 @@ CREATE TABLE cartItems (
 	item_id int NOT NULL,
 	quantity int NOT NULL
 );
-
-
--- INSERT INTO items (name, price, stock, lists, rating, relatedItems, img_url) VALUES ('crock pot', 34, 2, '["shopping"]', '{"rating": "3", "total": "45"}', '[123, 21]', 'www.google.com');
