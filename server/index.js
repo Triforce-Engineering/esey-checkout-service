@@ -1,13 +1,15 @@
-var express = require('express');
-var app = express();
-var port = 3002;
+const express = require('express');
 
-app.use(express.static(__dirname + '/../client/dist'));
+const app = express();
+const port = 3002;
+const path = require('path');
+
+app.use(express.static(path.join(__dirname, '/../client/dist')));
 
 
 app.listen(port, (err) => {
   if (err) {
-    console.error(err)
+    console.error(err);
   } else {
     console.log(`${port} we hear you!`);
   }
