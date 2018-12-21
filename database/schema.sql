@@ -13,7 +13,7 @@ CREATE TABLE items (
 	rating INT NOT NULL,
 	numOfRatings INT NOT NULL,
 	relatedItems JSON NOT NULL,
-	img_url varchar(200) NOT NULL,
+	imgUrl varchar(200) NOT NULL,
 	UNIQUE KEY (item_id)
 );
 
