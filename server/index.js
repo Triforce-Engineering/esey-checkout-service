@@ -1,7 +1,6 @@
 const express = require('express');
 
 const app = express();
-const port = 3002;
 const path = require('path');
 const bodyParser = require('body-parser');
 const db = require('../database/index.js');
@@ -41,7 +40,6 @@ app.get('/items/:id/related', (req, res) => {
       }
       res.send(results);
     });
-    // res.send(results)
   });
 });
 
@@ -64,10 +62,4 @@ app.patch('/items/:id/list', (req, res) => {
   });
 });
 
-app.listen(port, (err) => {
-  if (err) {
-    console.error(err);
-  } else {
-    console.log(`${port} we hear you!`);
-  }
-});
+module.exports = app;
