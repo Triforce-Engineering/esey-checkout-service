@@ -12,7 +12,7 @@
     "start": "nodemon server/server.js",
     "react-dev": "webpack -d --watch",
     "lint": "./node_modules/.bin/eslint",
-    "test": "jest"
+    "test": "jest --config ./spec/jest.config.json --detectOpenHandles"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
@@ -27,8 +27,11 @@
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
     "babel-cli": "^6.26.0",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-loader": "^8.0.4",
     "babel-preset-env": "^1.7.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
     "eslint": "^5.10.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",

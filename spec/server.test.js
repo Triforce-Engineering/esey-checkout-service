@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('./server/index.js');
+const app = require('../server/index.js');
 
 
 describe('get /items/:id', () => {
@@ -7,7 +7,7 @@ describe('get /items/:id', () => {
     request(app).get('/items/3')
       .then((response) => {
         expect(response.statusCode).toBe(200);
+        done();
       });
-    done();
   });
 });
