@@ -64,7 +64,7 @@ class purchaseOptions extends React.Component {
 
   addToCart() {
     $.ajax({
-      url: `http://localhost:3002/cart/items/${this.props.item.id}`,
+      url: `http://localhost:3002/cart/${this.props.item.id}`,
       method: 'POST',
       contentType: 'application/json',
       data: JSON.stringify({quantity: 4}),
@@ -80,7 +80,7 @@ class purchaseOptions extends React.Component {
   render() {
     return (
       <div>
-        <AddToCart onClick={this.addToCart}>
+        <AddToCart className='cart' onClick={this.addToCart}>
           <CartIcon />
           Add to Cart
         </AddToCart>

@@ -51,7 +51,7 @@ class Checkout extends React.Component {
 
   componentDidMount() {
     $.ajax({
-      url: `http://localhost:3002/3`,
+      url: `http://localhost:3002/items/3`,
       method: 'GET',
       contentType: 'application/json',
       success: (results) => {
