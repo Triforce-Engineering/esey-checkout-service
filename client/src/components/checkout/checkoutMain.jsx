@@ -73,7 +73,7 @@ class Checkout extends React.Component {
         <StyledBox>
           <Price>${this.state.item.price/100}</Price>
           <img src={'./images/primelogo.png'} style={{width: '53px'}}></img>
-          <StockInfo stock={this.state.item.stock}/>
+          <StockInfo stock={this.state.item.stock} name={this.state.item.name}/>
           <PurchaseOptions item={this.state.item}/>
           <LineBreak />
           <SmallLink> Turn on 1-Click ordering for this browser.</SmallLink>

@@ -36,7 +36,7 @@ const StockInfo = function(props) {
         In Stock.
       </InStock>}
    
-      Sold by <buttons.StyledLink>Totalee</buttons.StyledLink> and <buttons.StyledLink>Fulfilled by Amazon.</buttons.StyledLink> Gift Wrap Available. <br></br>
+      Sold by <buttons.StyledLink>{props.name.split(' ')[0] + ' World'}</buttons.StyledLink> and <buttons.StyledLink>Fulfilled by Amazon.</buttons.StyledLink> Gift Wrap Available. <br></br>
       Qty: <QtySelector stock={props.stock}></QtySelector>
 
     </StyledDiv>
