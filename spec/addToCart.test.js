@@ -2,20 +2,19 @@ import React from 'react';
 import Enzyme, { shallow, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import PurchaseOptions from '../client/src/components/checkout/purchaseOptions.jsx';
+import AddToCart from '../client/src/components/checkout/addToCart.jsx';
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('<PurchaseOptions />', () => {
-  it('renders one <PurchaseOptions /> components', () => {
-    const wrapper = shallow(<PurchaseOptions />);
+describe('<AddToCart />', () => {
+  it('renders one <AddToCart /> component', () => {
+    const wrapper = shallow(<AddToCart />);
     expect(wrapper.find('div')).toBeTruthy();
   });
 
   it('calls onClick event on click of AddToCart button', () => {
-    const wrapper = mount(<PurchaseOptions />);
     const onClick = jest.fn();
-    const AddToCart = wrapper.find('button.cart');
-    AddToCart.first().simulate('click');
+    const wrapper = mount(<AddToCart onClick={onClick} />);
+    wrapper.find(AddToCart).prop('onClick')();
     expect(onClick).toBeCalled();
   });
 });

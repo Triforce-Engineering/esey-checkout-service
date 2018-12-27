@@ -25,6 +25,16 @@ buttons.StyledButton = styled.button`
   }
 `
 
+buttons.Icon = styled.i `
+  top: 2px;
+  left: 2px;
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  background-size: 25px 25px;
+  background-repeat: no-repeat;
+`
+
 buttons.StyledLink = styled.a`
   color: #0066c0;
   cursor: pointer;
