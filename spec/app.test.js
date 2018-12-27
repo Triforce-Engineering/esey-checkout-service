@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 import App from '../client/src/app.jsx';
 // import Checkout from '../client/src/components.jsx';

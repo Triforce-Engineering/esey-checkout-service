@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import buttons from './buttonStyles.jsx';
+import $ from 'jquery';
 
 const AddToCart = styled(buttons.StyledButton) `
   background: linear-gradient(to bottom,#f7dfa5,#f0c14b);
@@ -38,7 +39,6 @@ const BuyNow = styled(buttons.StyledButton) `
   :hover:active {
     border-color:#be751a #b26d18 #9a5f15;  
   }
-
 `
 const Icon = styled.i `
   top: 2px;
@@ -55,19 +55,42 @@ const CartIcon = styled(Icon) `
 const BuyIcon = styled(Icon) `
   background-image: url('./images/buynow.png');
 `
-const purchaseOptions = function() {
-  return (
-    <div>
-      <AddToCart>
-        <CartIcon />
-        Add to Cart
-      </AddToCart>
-      <BuyNow>
-        <BuyIcon />
-        Buy Now
-      </BuyNow>
-    </div>
+class purchaseOptions extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.addToCart = this.addToCart.bind(this);
+  }
+
+  addToCart() {
+    $.ajax({
+      url: `http://localhost:3002/cart/items/${this.props.item.id}`,
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify({quantity: 4}),
+      success: () => {
+        console.log('added to cart');
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+  }
+  
+  render() {
+    return (
+      <div>
+        <AddToCart onClick={this.addToCart}>
+          <CartIcon />
+          Add to Cart
+        </AddToCart>
+        <BuyNow>
+          <BuyIcon />
+          Buy Now
+        </BuyNow>
+      </div>
     )
+  }
 }
 
 export default purchaseOptions;

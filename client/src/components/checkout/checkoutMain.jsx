@@ -4,6 +4,7 @@ import StockInfo from './stockInfo.jsx';
 import PurchaseOptions from './purchaseOptions.jsx';
 import AddToList from './addToList.jsx';
 import buttons from './buttonStyles.jsx';
+import $ from 'jquery';
 
 const StyledBox = styled.div `
   height: auto;
@@ -27,7 +28,6 @@ const LineBreak = styled.hr `
   border-top: 1px;
   border-top-color: #e7e7e7;
   margin-bottom: 14px;
-
 `
 const SmallLink = styled(buttons.StyledLink)`
   font-size: 11px;
@@ -36,19 +36,38 @@ class Checkout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      price: 0,
-      stock: 0,
-      onList: false,
-      rating: 0,
-      numOfRatings: 0,
-      relatedItems: [],
-      imgUrl: ''
+      item: {
+        name: '',
+        price: 0,
+        stock: 0,
+        onList: false,
+        rating: 0,
+        numOfRatings: 0,
+        relatedItems: [],
+        imgUrl: ''
+      }
     }
   }
 
   componentDidMount() {
-    
+    $.ajax({
+      url: `http://localhost:3002/3`,
+      method: 'GET',
+      contentType: 'application/json',
+      success: (results) => {
+        this.setState({
+          item: {
+            id: results[0].item_id,
+            name: results[0].name,
+            price: results[0].price/100
+          }
+        })
+        console.log(results[0])
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
   }
 
   render() {
@@ -56,10 +75,10 @@ class Checkout extends React.Component {
       <div>
         <img src={'./images/socialmedia.png'} style={{width: '230px'}}></img>
         <StyledBox>
-          <Price>$17.97</Price>
+          <Price>${this.state.item.price}</Price>
           <img src={'./images/primelogo.png'} style={{width: '53px'}}></img>
           <StockInfo />
-          <PurchaseOptions />
+          <PurchaseOptions item={this.state.item}/>
           <LineBreak />
           <SmallLink> Turn on 1-Click ordering for this browser.</SmallLink>
           <LineBreak />
