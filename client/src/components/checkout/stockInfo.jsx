@@ -21,7 +21,13 @@ const QtySelector = styled.select`
   background-color: rgb(248, 248, 248);
   border-color: rgb(221, 221, 221);
 `
-
+const InStock = styled(StyledDiv)`
+  color: #008a00;
+  font-size: 17px;
+`
+const LowStock = styled(InStock)`
+  color: #B12704;
+`
 var d = new Date();
 var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
@@ -29,7 +35,15 @@ const StockInfo = function() {
   return (
     <StyledDiv>
       FREE delivery by <b>{days[d.getDay() + 2]}.</b> <buttons.StyledLink>Details</buttons.StyledLink> <br></br>
+      <InStock>
+        In Stock.
+      </InStock>
+      {/* <LowStock>
+        Only 2 left in stock - order soon.
+      </LowStock> */}
+      Sold by <buttons.StyledLink>Totalee</buttons.StyledLink> and <buttons.StyledLink>Fulfilled by Amazon.</buttons.StyledLink> Gift Wrap Available. <br></br>
       Qty: <QtySelector></QtySelector>
+
     </StyledDiv>
   )
 }

@@ -4,6 +4,8 @@ import buttons from './buttonStyles.jsx';
 
 const AddToListBtn = styled(buttons.StyledButton)`
   display: inline-block;
+  text-align: left;
+  padding-left: 10px;
   width: 179px;
   border-radius: 3px 0 0 3px;
   border-color: #adb1b8 #a2a6ac #8d9096;
@@ -30,6 +32,7 @@ const AddToListBtn = styled(buttons.StyledButton)`
   `
 const DropDown = styled(AddToListBtn)`
   width: 25px;
+  padding: 0px;
   border-radius: 0 3px 3px 0;
   border-left-width: 0;
 `
