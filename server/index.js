@@ -12,7 +12,7 @@ app.get('/items/:id', (req, res) => {
   db.connection.query(`SELECT * FROM items WHERE item_id = ${req.params.id}`, (err, results) => {
     if (err) {
       res.send(err);
-    } 
+    }
     res.send(results);
   });
 });
@@ -47,7 +47,7 @@ app.post('/cart/:id', (req, res) => {
     if (err) {
       res.send(err);
     }
-    res.send('added to cart');
+    res.send('server: added to cart');
   });
 });
 
