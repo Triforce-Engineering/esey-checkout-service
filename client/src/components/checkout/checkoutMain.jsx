@@ -56,11 +56,7 @@ class Checkout extends React.Component {
       contentType: 'application/json',
       success: (results) => {
         this.setState({
-          item: {
-            id: results[0].item_id,
-            name: results[0].name,
-            price: results[0].price/100
-          }
+          item: results[0]
         })
         console.log(results[0])
       },
@@ -75,9 +71,9 @@ class Checkout extends React.Component {
       <div>
         <img src={'./images/socialmedia.png'} style={{width: '230px'}}></img>
         <StyledBox>
-          <Price>${this.state.item.price}</Price>
+          <Price>${this.state.item.price/100}</Price>
           <img src={'./images/primelogo.png'} style={{width: '53px'}}></img>
-          <StockInfo />
+          <StockInfo stock={this.state.item.stock}/>
           <PurchaseOptions item={this.state.item}/>
           <LineBreak />
           <SmallLink> Turn on 1-Click ordering for this browser.</SmallLink>
@@ -87,7 +83,7 @@ class Checkout extends React.Component {
             <SmallLink> Deliver to Jessica - Albany 94706.</SmallLink>
           </div>
           <LineBreak />
-          <AddToList />
+          <AddToList item={this.state.item}/>
           <SmallLink>Add to your Dash Buttons.</SmallLink>
         </StyledBox>
       </div>
