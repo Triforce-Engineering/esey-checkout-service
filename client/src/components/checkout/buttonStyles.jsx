@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 
-const StyledButton = styled.button`
+const buttons = {};
+
+buttons.StyledButton = styled.button`
   display: block;
   height: 31px;
   width: 206px;
   margin-bottom: 10px;
+  padding: 0;
   position: relative;
   text-align: center;
   vertical-align: middle;
@@ -21,4 +24,17 @@ const StyledButton = styled.button`
     outline:0;
   }
 `
-export default StyledButton;
+
+buttons.StyledLink = styled.a`
+  color: #0066c0;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 19px;
+  font-family: Arial,sans-serif;
+
+  :hover {
+    color: #c45500;
+    text-decoration: underline;
+  }
+`
+export default buttons;

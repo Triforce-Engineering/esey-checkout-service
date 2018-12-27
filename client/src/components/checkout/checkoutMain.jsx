@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import StockInfo from './stockInfo.jsx';
 import PurchaseOptions from './purchaseOptions.jsx';
-// import Button from './button.jsx';
+import AddToList from './addToList.jsx';
 
 const StyledCheckoutBox = styled.div `
   height: 576px;
@@ -33,7 +34,9 @@ class Checkout extends React.Component {
         <StyledCheckoutBox>
           <Price>$17.97</Price>
           <img src={'./images/primelogo.png'} style={{width: '53px'}}></img>
+          <StockInfo />
           <PurchaseOptions />
+          <AddToList />
         </StyledCheckoutBox>
       </div>
     );

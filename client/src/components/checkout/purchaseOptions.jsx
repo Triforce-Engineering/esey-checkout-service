@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import StyledButton from './buttonStyles.jsx';
+import buttons from './buttonStyles.jsx';
 
-const AddToCart = styled(StyledButton) `
+const AddToCart = styled(buttons.StyledButton) `
   background: linear-gradient(to bottom,#f7dfa5,#f0c14b);
   border-color: #a88734 #9c7e31 #846a29;
 
@@ -20,7 +20,7 @@ const AddToCart = styled(StyledButton) `
     border-color:#a88734 #9c7e31 #846a29;
   }
 `
-const BuyNow = styled(StyledButton) `
+const BuyNow = styled(buttons.StyledButton) `
   background: linear-gradient(to bottom,#f6c88f,#ed9220);
   border-color: #ca7c1b #be751a #a56616;
 }
