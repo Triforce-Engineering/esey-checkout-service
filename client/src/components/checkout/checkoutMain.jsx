@@ -35,6 +35,20 @@ const SmallLink = styled(buttons.StyledLink)`
 class Checkout extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      name: '',
+      price: 0,
+      stock: 0,
+      onList: false,
+      rating: 0,
+      numOfRatings: 0,
+      relatedItems: [],
+      imgUrl: ''
+    }
+  }
+
+  componentDidMount() {
+    
   }
 
   render() {
