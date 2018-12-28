@@ -32,6 +32,7 @@ buttons.AddToListBtn = styled(buttons.StyledButton)`
   border-radius: 3px 0 0 3px;
   border-color: #adb1b8 #a2a6ac #8d9096;
   background:linear-gradient(to bottom,#f7f8fa,#e7e9ec);
+  z-index: 0;
 
   :hover {
     border-color:#a2a6ac #979aa1 #82858a;

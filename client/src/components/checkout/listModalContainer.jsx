@@ -15,14 +15,15 @@ const ModalBox = styled.div `
   border-radius: 4px;
   border-color: rgba(0,0,0,.75);
   box-shadow: 0 4px 6px rgba(0,0,0,.25);
-`
-const ShowModal = styled.div `
+  `
+  const ShowModal = styled.div `
   position: fixed;
   top: 0;
   left: 0;
   width:100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
+  z-index: 10;
 `
 const HideModal = styled.div `
   display: none;
@@ -32,7 +33,6 @@ const Header = styled.header `
   position: relative;
   height: 36px;
   width: auto;
-  font-family: Arial;
   text-align: left;
   background: linear-gradient(to bottom,#f7f7f7,#eaeaea);
   border-radius: 4px 4px 0 0;
@@ -61,7 +61,7 @@ const ListModalContainer = function(props) {
             <HeaderText>Add to List</HeaderText>
             <buttons.XClose onClick={props.handleClose}>x</buttons.XClose>
           </Header>
-          <ListModalContent />
+          <ListModalContent item={props.item} />
         </ModalBox>
       </ShowModal> : 
       <HideModal/>}

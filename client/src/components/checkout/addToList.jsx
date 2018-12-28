@@ -35,7 +35,7 @@ class AddToList extends React.Component {
   render() {
     return (
       <div>
-        <ListModalContainer show={this.state.show} handleClose={this.hideModal} >
+        <ListModalContainer item={this.props.item} show={this.state.show} handleClose={this.hideModal} >
         </ListModalContainer>
         <buttons.AddToListBtn onClick={this.showModal}>
           Add to List
