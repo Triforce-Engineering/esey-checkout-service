@@ -16,7 +16,6 @@ buttons.StyledButton = styled.button`
   cursor: pointer;
   font-size: 13px;
   line-height: 19px;
-  font-family: Arial,sans-serif;
   
   :focus {
     border-color: #e77600;
@@ -76,7 +75,6 @@ buttons.StyledLink = styled.a`
   cursor: pointer;
   font-size: 13px;
   line-height: 19px;
-  font-family: Arial,sans-serif;
 
   :hover {
     color: #c45500;
@@ -99,6 +97,5 @@ buttons.XClose = styled.button`
   right: 5px;
   margin: -7px 0 0;
   line-height: 0;
-  font-family: Arial;
 `
 export default buttons;

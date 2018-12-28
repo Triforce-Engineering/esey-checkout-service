@@ -4,7 +4,6 @@ import buttons from './buttonStyles.jsx';
 import QtySelector from './quantitySelector.jsx';
 
 const StyledDiv = styled.div`
-  font-family: Arial, sans-serif;
   font-size: 13px;
   line-height: 19px;
   color: #111;

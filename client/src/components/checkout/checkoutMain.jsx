@@ -21,7 +21,6 @@ const Price = styled.div `
   font-size: 17px;
   line-height: 1.255;
   color: #B12704;
-  font-family: Arial, sans-serif;
 `
 const LineBreak = styled.hr `
   background-color: transparent;
@@ -68,7 +67,7 @@ class Checkout extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{fontFamily: 'Arial, sans-serif'}}>
         <img src={'./images/socialmedia.png'} style={{width: '230px'}}></img>
         <StyledBox>
           <Price>${this.state.item.price/100}</Price>
