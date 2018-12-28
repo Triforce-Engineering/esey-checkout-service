@@ -47,7 +47,7 @@ app.post('/cart/:id', (req, res) => {
     if (err) {
       res.send(err);
     }
-    res.send('server: added to cart');
+    res.send();
   });
 });
 
