@@ -51,7 +51,7 @@ class Checkout extends React.Component {
 
   componentDidMount() {
     $.ajax({
-      url: `http://localhost:3002/items/3`,
+      url: `http://localhost:3002/items/27`,
       method: 'GET',
       contentType: 'application/json',
       success: (results) => {
@@ -96,3 +96,4 @@ class Checkout extends React.Component {
 }
 
 export default Checkout;
+export { StyledBox, Price, LineBreak }

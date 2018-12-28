@@ -25,6 +25,42 @@ buttons.StyledButton = styled.button`
   }
 `
 
+buttons.AddToListBtn = styled(buttons.StyledButton)`
+  display: inline-block;
+  text-align: left;
+  padding-left: 10px;
+  width: 179px;
+  border-radius: 3px 0 0 3px;
+  border-color: #adb1b8 #a2a6ac #8d9096;
+  background:linear-gradient(to bottom,#f7f8fa,#e7e9ec);
+
+  :hover {
+    border-color:#a2a6ac #979aa1 #82858a;
+    background:linear-gradient(to bottom,#e7eaf0,#d9dce1);
+  }
+
+  :active {
+    background-color: #dcdfe3
+    box-shadow:0 1px 3px rgba(0,0,0,.2) inset;
+    border-color:#adb1b8 #a2a6ac #a2a6ac;
+  }
+  
+  :hover:active {
+    border-color:#adb1b8 #a2a6ac #a2a6ac;
+  }
+
+  :focus {
+    box-shadow:0 0 3px 2px rgba(228,121,17,.5);
+  }
+`
+
+buttons.DropDown = styled(buttons.AddToListBtn)`
+  width: 25px;
+  padding: 0px;
+  border-radius: 0 3px 3px 0;
+  border-left-width: 0;
+`
+
 buttons.Icon = styled.i `
   top: 2px;
   left: 2px;
