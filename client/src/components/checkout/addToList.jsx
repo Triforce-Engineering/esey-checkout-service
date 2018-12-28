@@ -59,13 +59,11 @@ class AddToList extends React.Component {
   }
 
   showModal() {
-    this.setState({show: true}, () => {
-      console.log(this.state);
-    });
+    this.setState({show: true});
   }
 
   hideModal() {
-    this.setSteate({show: false});
+    this.setState({show: false});
   }
 
   render() {

@@ -47,4 +47,22 @@ buttons.StyledLink = styled.a`
     text-decoration: underline;
   }
 `
+
+buttons.XClose = styled.button`
+  display: block;
+  cursor: pointer;
+  zoom: 1.4;
+  background-color: transparent;
+  border-radius: 3px;
+  border: 1px solid;
+  border-color: transparent;
+  float: right;
+  padding: 6px;
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  margin: -7px 0 0;
+  line-height: 0;
+  font-family: Arial;
+`
 export default buttons;
