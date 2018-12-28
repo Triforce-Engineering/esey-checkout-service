@@ -30,7 +30,7 @@ const LineBreak = styled.hr `
   margin-bottom: 14px;
 `
 const SmallLink = styled(buttons.StyledLink)`
-  font-size: 11px;
+  font-size: 12px;
 `
 class Checkout extends React.Component {
   constructor(props) {
@@ -76,15 +76,19 @@ class Checkout extends React.Component {
           <StockInfo stock={this.state.item.stock} name={this.state.item.name}/>
           <PurchaseOptions item={this.state.item}/>
           <LineBreak />
-          <SmallLink> Turn on 1-Click ordering for this browser.</SmallLink>
+          <SmallLink style={{fontSize: '11px'}}> Turn on 1-Click ordering for this browser</SmallLink>
           <LineBreak />
           <div>
-            <img src={'./images/mapsymbol.png'} style={{width: '12px'}}></img>
-            <SmallLink> Deliver to Jessica - Albany 94706.</SmallLink>
+              <img src={'./images/mapsymbol.png'} style={{width: '12px', position: 'relative', top: '-19px', paddingRight: '5px'}}></img>
+            <div style={{display: 'inline-block', width: '120px'}}>
+              <SmallLink> Deliver to Jessica - Albany 94706</SmallLink>
+            </div>
           </div>
           <LineBreak />
           <AddToList item={this.state.item}/>
-          <SmallLink>Add to your Dash Buttons.</SmallLink>
+          <div style={{textAlign: 'center'}}>
+            <SmallLink>Add to your Dash Buttons</SmallLink>
+          </div>
         </StyledBox>
       </div>
     );

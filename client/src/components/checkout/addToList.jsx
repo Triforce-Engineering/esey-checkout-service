@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import buttons from './buttonStyles.jsx';
+import ListModal from './listModal.jsx';
 
 const AddToListBtn = styled(buttons.StyledButton)`
   display: inline-block;
@@ -47,18 +48,41 @@ const DropdownIcon = styled.div`
   background-size: 18px 18px;
   background-repeat: no-repeat;
 `
-const AddToList = function() {
-  return (
-    <div style={{display: 'inline-block'}}>
-      <AddToListBtn>
-        Add to List
-      </AddToListBtn>
-      <DropDown>
-        <DropdownIcon> 
-        </DropdownIcon>
-      </DropDown> 
-    </div>
-  )
+class AddToList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      show: false
+    }
+    this.showModal = this.showModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
+  }
+
+  showModal() {
+    this.setState({show: true}, () => {
+      console.log(this.state);
+    });
+  }
+
+  hideModal() {
+    this.setSteate({show: false});
+  }
+
+  render() {
+    return (
+      <div>
+        <ListModal show={this.state.show} handleClose={this.hideModal} >
+        </ListModal>
+        <AddToListBtn onClick={this.showModal}>
+          Add to List
+        </AddToListBtn>
+        <DropDown>
+          <DropdownIcon> 
+          </DropdownIcon>
+        </DropDown> 
+      </div>
+    )
+  }
 }
 
 export default AddToList;

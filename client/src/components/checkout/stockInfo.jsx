@@ -26,7 +26,7 @@ const StockInfo = function(props) {
 
   return (
     <StyledDiv>
-      FREE delivery by <b>{days[d.getDay() + 2]}.</b> <buttons.StyledLink>Details</buttons.StyledLink> <br></br>
+      FREE Delivery by <b>{days[d.getDay() + 2]}.</b> <buttons.StyledLink>Details</buttons.StyledLink> <br></br>
       
       {props.stock < 5 ?    
       <LowStock>
