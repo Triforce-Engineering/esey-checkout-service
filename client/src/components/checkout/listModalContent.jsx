@@ -3,9 +3,11 @@ import styled from 'styled-components';
 import buttons from './buttonStyles.jsx';
 import { LineBreak, StyledBox } from './checkoutMain.jsx';
 import { AddToCartBtn } from './addToCart.jsx';
+import CurrentItemView from './currentItemView.jsx';
+import RelatedItemView from './relatedItemView.jsx';
 
 const ContentBox = styled.div `
-  max-height: 664px;
+  max-height: 639px;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 14px 18px;
@@ -27,19 +29,29 @@ const ListModalContent = function(props) {
     <ContentBox>
       <StyledTitle>
         {props.item.onList ? 'This item was already in ' : '1 item added to '}
-         <buttons.StyledLink style={{fontSize: '20px'}}>Shopping List</buttons.StyledLink>
+         <buttons.StyledLink style={{fontSize: '20px', color:'#0055aa'}}>Shopping List</buttons.StyledLink>
          {props.item.onList ? <StyledTitle style={{fontSize: '13px', color: '#666666', marginTop: '3px'}}> We've moved it to the top of the list.</StyledTitle> : null}
       </StyledTitle>
-      <div style={{display: 'inline-block', width: '620px'}}>
-        <img src={props.item.imgUrl} style={{height: '110px'}}></img>
+      <div style={{display: 'inline-block', margin: '20px 0 10px 18px'}}>
+        <CurrentItemView item={props.item} />
+        <StyledBox style={{display: 'inline-block', verticalAlign: 'middle'}}>
+          <ViewListBtn style={{marginBottom: '15px'}}>View Your List</ViewListBtn>
+          <AddToCartBtn style={{margin: 0}}>Continue shopping</AddToCartBtn>
+        </StyledBox>
       </div>
-      <StyledBox style={{display: 'inline-block', marginBottom: '10px'}}>
-        <ViewListBtn>View Your List</ViewListBtn>
-        <AddToCartBtn>Continue shopping</AddToCartBtn>
-      </StyledBox>
       <LineBreak />
-      title for recommended items
-      + mapped related items component
+      <StyledTitle style={{fontSize: '16px', lineHeight: '22px', color: '#333333', fontWeight: '700'}}>Customers who bought {props.item.name} also bought</StyledTitle>
+      <div style={{padding: '0 65px 0 83px', height: '315px'}}>
+        {props.relatedItems.map((relatedItem) => {
+          return <RelatedItemView key={relatedItem.name} relatedItem={relatedItem} />
+        })}
+      </div>
+      <LineBreak />
+      <div style={{paddingBottom: '20px', fontSize: '20px', textAlign: 'center'}}>
+        <img style={{height: '50px', width: '48px', verticalAlign: 'middle'}} src={'./images/fancyamazon.png'}></img>
+        <span style={{verticalAlign: 'middle', paddingLeft: '15px'}}>Add items from any website to your Amazon List</span>
+        <buttons.StyledLink style={{fontSize: '16px', color: '#0055aa', paddingLeft: '10px'}}>Learn how</buttons.StyledLink>
+      </div>
     </ContentBox>
   )
 }

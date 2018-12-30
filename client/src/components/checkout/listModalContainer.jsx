@@ -61,7 +61,7 @@ const ListModalContainer = function(props) {
             <HeaderText>Add to List</HeaderText>
             <buttons.XClose onClick={props.handleClose}>x</buttons.XClose>
           </Header>
-          <ListModalContent item={props.item} />
+          <ListModalContent item={props.item} relatedItems={props.relatedItems}/>
         </ModalBox>
       </ShowModal> : 
       <HideModal/>}

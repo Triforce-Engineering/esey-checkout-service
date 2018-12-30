@@ -44,20 +44,34 @@ class Checkout extends React.Component {
         numOfRatings: 0,
         relatedItems: [],
         imgUrl: ''
-      }
+      },
+      relatedItems: []
     }
   }
 
   componentDidMount() {
     $.ajax({
-      url: `http://localhost:3002/items/27`,
+      url: `http://localhost:3002/items/75`,
       method: 'GET',
       contentType: 'application/json',
       success: (results) => {
         this.setState({
           item: results[0]
-        })
-        console.log(results[0])
+        }, () => {
+          $.ajax({
+            url: `http://localhost:3002/items/${this.state.item.item_id}/related`,
+            method: 'GET',
+            contentType: 'application/json',
+            success: (results) => {
+              this.setState({
+                relatedItems: results
+              })
+            },
+            error: (err) => {
+              console.log(err);
+            }
+          });
+        });
       },
       error: (err) => {
         console.log(err);
@@ -70,10 +84,10 @@ class Checkout extends React.Component {
       <div style={{fontFamily: 'Arial, sans-serif'}}>
         <img src={'./images/socialmedia.png'} style={{width: '230px'}}></img>
         <StyledBox>
-          <Price>${this.state.item.price/100}</Price>
+          <Price>${(this.state.item.price/100).toFixed(2)}</Price>
           <img src={'./images/primelogo.png'} style={{width: '53px'}}></img>
           <StockInfo stock={this.state.item.stock} name={this.state.item.name}/>
-          <PurchaseOptions item={this.state.item}/>
+          <PurchaseOptions item={this.state.item} />
           <LineBreak />
           <SmallLink style={{fontSize: '11px'}}> Turn on 1-Click ordering for this browser</SmallLink>
           <LineBreak />
@@ -84,7 +98,7 @@ class Checkout extends React.Component {
             </div>
           </div>
           <LineBreak />
-          <AddToList item={this.state.item}/>
+          <AddToList item={this.state.item} relatedItems={this.state.relatedItems}/>
           <div style={{textAlign: 'center'}}>
             <SmallLink>Add to your Dash Buttons</SmallLink>
           </div>
