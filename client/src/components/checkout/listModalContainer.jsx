@@ -5,10 +5,10 @@ import ListModalContent from './listModalContent.jsx';
 
 const ModalBox = styled.div `
   display: block;
-  position:fixed;
+  position: relative;
   background: white;
-  width: 898px;
-  height: auto;
+  width: 900px;
+  height: 700px;
   top:50%;
   left:50%;
   transform: translate(-50%,-50%);
@@ -28,7 +28,6 @@ const ModalBox = styled.div `
 const HideModal = styled.div `
   display: none;
 `
-
 const Header = styled.header `
   position: relative;
   height: 36px;

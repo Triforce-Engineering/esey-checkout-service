@@ -12,14 +12,12 @@ const RelatedItemDiv = styled.div`
   margin: 0 7px 0 7px;
   padding-top: 10px;
 `
-
 const TinyAddToCartBtn = styled(AddToCartBtn)`
   height: 22px;
   width: 135px;
   margin-bottom: 5px;
-  font-size: 10px;
+  font-size: 10px;  
 `
-
 const TinyAddToListBtn = styled(buttons.AddToListBtn)`
   height: 22px;
   width: 135px;
