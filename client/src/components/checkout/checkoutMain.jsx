@@ -21,7 +21,6 @@ const Price = styled.div `
   font-size: 17px;
   line-height: 1.255;
   color: #B12704;
-  font-family: Arial, sans-serif;
 `
 const LineBreak = styled.hr `
   background-color: transparent;
@@ -30,7 +29,7 @@ const LineBreak = styled.hr `
   margin-bottom: 14px;
 `
 const SmallLink = styled(buttons.StyledLink)`
-  font-size: 11px;
+  font-size: 12px;
 `
 class Checkout extends React.Component {
   constructor(props) {
@@ -45,20 +44,34 @@ class Checkout extends React.Component {
         numOfRatings: 0,
         relatedItems: [],
         imgUrl: ''
-      }
+      },
+      relatedItems: []
     }
   }
 
   componentDidMount() {
     $.ajax({
-      url: `http://localhost:3002/items/3`,
+      url: `http://localhost:3002/items/75`,
       method: 'GET',
       contentType: 'application/json',
       success: (results) => {
         this.setState({
           item: results[0]
-        })
-        console.log(results[0])
+        }, () => {
+          $.ajax({
+            url: `http://localhost:3002/items/${this.state.item.item_id}/related`,
+            method: 'GET',
+            contentType: 'application/json',
+            success: (results) => {
+              this.setState({
+                relatedItems: results
+              })
+            },
+            error: (err) => {
+              console.log(err);
+            }
+          });
+        });
       },
       error: (err) => {
         console.log(err);
@@ -68,23 +81,27 @@ class Checkout extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{fontFamily: 'Arial, sans-serif'}}>
         <img src={'./images/socialmedia.png'} style={{width: '230px'}}></img>
         <StyledBox>
-          <Price>${this.state.item.price/100}</Price>
+          <Price>${(this.state.item.price/100).toFixed(2)}</Price>
           <img src={'./images/primelogo.png'} style={{width: '53px'}}></img>
           <StockInfo stock={this.state.item.stock} name={this.state.item.name}/>
-          <PurchaseOptions item={this.state.item}/>
+          <PurchaseOptions item={this.state.item} />
           <LineBreak />
-          <SmallLink> Turn on 1-Click ordering for this browser.</SmallLink>
+          <SmallLink style={{fontSize: '11px'}}> Turn on 1-Click ordering for this browser</SmallLink>
           <LineBreak />
           <div>
-            <img src={'./images/mapsymbol.png'} style={{width: '12px'}}></img>
-            <SmallLink> Deliver to Jessica - Albany 94706.</SmallLink>
+              <img src={'./images/mapsymbol.png'} style={{width: '12px', position: 'relative', top: '-19px', paddingRight: '5px'}}></img>
+            <div style={{display: 'inline-block', width: '120px'}}>
+              <SmallLink> Deliver to Jessica - Albany 94706</SmallLink>
+            </div>
           </div>
           <LineBreak />
-          <AddToList item={this.state.item}/>
-          <SmallLink>Add to your Dash Buttons.</SmallLink>
+          <AddToList item={this.state.item} relatedItems={this.state.relatedItems}/>
+          <div style={{textAlign: 'center'}}>
+            <SmallLink>Add to your Dash Buttons</SmallLink>
+          </div>
         </StyledBox>
       </div>
     );
@@ -92,3 +109,4 @@ class Checkout extends React.Component {
 }
 
 export default Checkout;
+export { StyledBox, Price, LineBreak }

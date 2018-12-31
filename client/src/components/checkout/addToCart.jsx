@@ -35,3 +35,4 @@ const AddToCart = function(props) {
 }
 
 export default AddToCart;
+export { AddToCartBtn };

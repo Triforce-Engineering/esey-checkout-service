@@ -1,41 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import buttons from './buttonStyles.jsx';
+import ListModalContainer from './listModalContainer.jsx';
 
-const AddToListBtn = styled(buttons.StyledButton)`
-  display: inline-block;
-  text-align: left;
-  padding-left: 10px;
-  width: 179px;
-  border-radius: 3px 0 0 3px;
-  border-color: #adb1b8 #a2a6ac #8d9096;
-  background:linear-gradient(to bottom,#f7f8fa,#e7e9ec);
-
-  :hover {
-    border-color:#a2a6ac #979aa1 #82858a;
-    background:linear-gradient(to bottom,#e7eaf0,#d9dce1);
-  }
-
-  :active {
-    background-color: #dcdfe3
-    box-shadow:0 1px 3px rgba(0,0,0,.2) inset;
-    border-color:#adb1b8 #a2a6ac #a2a6ac;
-  }
-  
-  :hover:active {
-    border-color:#adb1b8 #a2a6ac #a2a6ac;
-  }
-
-  :focus {
-    box-shadow:0 0 3px 2px rgba(228,121,17,.5);
-  }
-  `
-const DropDown = styled(AddToListBtn)`
-  width: 25px;
-  padding: 0px;
-  border-radius: 0 3px 3px 0;
-  border-left-width: 0;
-`
 const DropdownIcon = styled.div`
   width: 25px;
   height: 25px;
@@ -47,18 +14,39 @@ const DropdownIcon = styled.div`
   background-size: 18px 18px;
   background-repeat: no-repeat;
 `
-const AddToList = function() {
-  return (
-    <div style={{display: 'inline-block'}}>
-      <AddToListBtn>
-        Add to List
-      </AddToListBtn>
-      <DropDown>
-        <DropdownIcon> 
-        </DropdownIcon>
-      </DropDown> 
-    </div>
-  )
+class AddToList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      show: false
+    }
+    this.showModal = this.showModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
+  }
+
+  showModal() {
+    this.setState({show: true});
+  }
+
+  hideModal() {
+    this.setState({show: false});
+  }
+
+  render() {
+    return (
+      <div>
+        <ListModalContainer item={this.props.item} relatedItems={this.props.relatedItems} show={this.state.show} handleClose={this.hideModal} >
+        </ListModalContainer>
+        <buttons.AddToListBtn onClick={this.showModal}>
+          Add to List
+        </buttons.AddToListBtn>
+        <buttons.DropDown>
+          <DropdownIcon> 
+          </DropdownIcon>
+        </buttons.DropDown> 
+      </div>
+    )
+  }
 }
 
 export default AddToList;

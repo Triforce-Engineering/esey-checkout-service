@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import buttons from './buttonStyles.jsx';
 import AddToCart from './addToCart.jsx';
 
-
 const BuyNow = styled(buttons.StyledButton) `
   background: linear-gradient(to bottom,#f6c88f,#ed9220);
   border-color: #ca7c1b #be751a #a56616;
@@ -37,7 +36,7 @@ class purchaseOptions extends React.Component {
 
   addToCart() {
     $.ajax({
-      url: `http://localhost:3002/cart/${this.props.item.id}`,
+      url: `http://localhost:3002/cart/${this.props.item.item_id}`,
       method: 'POST',
       contentType: 'application/json',
       data: JSON.stringify({quantity: 4}),

@@ -4,7 +4,6 @@ import buttons from './buttonStyles.jsx';
 import QtySelector from './quantitySelector.jsx';
 
 const StyledDiv = styled.div`
-  font-family: Arial, sans-serif;
   font-size: 13px;
   line-height: 19px;
   color: #111;
@@ -26,7 +25,7 @@ const StockInfo = function(props) {
 
   return (
     <StyledDiv>
-      FREE delivery by <b>{days[d.getDay() + 2]}.</b> <buttons.StyledLink>Details</buttons.StyledLink> <br></br>
+      FREE Delivery by <b>{days[d.getDay() + 2]}.</b> <buttons.StyledLink>Details</buttons.StyledLink> <br></br>
       
       {props.stock < 5 ?    
       <LowStock>
