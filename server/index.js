@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const db = require('../database/index.js');
 
 app.use(cors());
-app.use(express.static(path.join(__dirname, '/../client/dist')));
+app.use('/:id', express.static(path.join(__dirname, '/../client/dist')));
 app.use(bodyParser.json());
 
 app.get('/items/:id', (req, res) => {
