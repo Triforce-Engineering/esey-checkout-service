@@ -86,17 +86,22 @@ buttons.StyledLink = styled.a`
 buttons.XClose = styled.button`
   display: block;
   cursor: pointer;
-  zoom: 1.4;
   background-color: transparent;
+  background-image: url(https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS@variables-sprite_2x-13acd72bb22e0c502de00d0afe21c494871da686._V2_.png);
   border-radius: 3px;
+  background-position: -297px -5px;
+  background-size: 400px 900px;
+  background-repeat: no-repeat;
+  width: 10px;
+  height: 10px;
+  opacity: 0.64;
   border: 1px solid;
   border-color: transparent;
-  float: right;
-  padding: 6px;
   position: absolute;
-  top: 50%;
-  right: 5px;
+  top: 55%;
+  right: 11px;
   margin: -7px 0 0;
   line-height: 0;
+}
 `
 export default buttons;

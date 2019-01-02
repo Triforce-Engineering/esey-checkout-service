@@ -31,6 +31,27 @@ const LineBreak = styled.hr `
 const SmallLink = styled(buttons.StyledLink)`
   font-size: 12px;
 `
+const PrimeLogo = styled.div`
+  background-image: url('https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS@variables-sprite_2x-13acd72bb22e0c502de00d0afe21c494871da686._V2_.png');
+  height: 27px;
+  width: 90px;
+  background-position: -409px -493px;
+  position: relative;
+  background-repeat: no-repeat;
+  margin: 4px 0 16px 0;
+  zoom: 0.63;
+`
+const MapSymbol = styled(PrimeLogo)`
+  background-image: url('https://m.media-amazon.com/images/G/01/AUIClients/DeliveryStaticPackard-pin_desktop_2x-180f59a1b475c745a0ed67623d406c57aa5d0392._V2_.png');
+  background-position: center;
+  width: 26px;
+  height: 35px;
+  background-position: center;
+  zoom: 0.5;
+  display: inline-block;
+  margin: 0 10px 0 0;
+  top: -34px;
+`
 class Checkout extends React.Component {
   constructor(props) {
     super(props);
@@ -51,7 +72,7 @@ class Checkout extends React.Component {
 
   componentDidMount() {
     $.ajax({
-      url: `http://localhost:3002/items/75`,
+      url: `http://localhost:3002/items/${window.location.href.split('/')[3]}`,
       method: 'GET',
       contentType: 'application/json',
       success: (results) => {
@@ -85,14 +106,14 @@ class Checkout extends React.Component {
         <img src={'./images/socialmedia.png'} style={{width: '230px'}}></img>
         <StyledBox>
           <Price>${(this.state.item.price/100).toFixed(2)}</Price>
-          <img src={'./images/primelogo.png'} style={{width: '53px'}}></img>
+          <PrimeLogo />
           <StockInfo stock={this.state.item.stock} name={this.state.item.name}/>
           <PurchaseOptions item={this.state.item} />
           <LineBreak />
           <SmallLink style={{fontSize: '11px'}}> Turn on 1-Click ordering for this browser</SmallLink>
           <LineBreak />
           <div>
-              <img src={'./images/mapsymbol.png'} style={{width: '12px', position: 'relative', top: '-19px', paddingRight: '5px'}}></img>
+            <MapSymbol />
             <div style={{display: 'inline-block', width: '120px'}}>
               <SmallLink> Deliver to Jessica - Albany 94706</SmallLink>
             </div>

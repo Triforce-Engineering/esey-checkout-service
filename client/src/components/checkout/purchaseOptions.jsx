@@ -25,7 +25,9 @@ const BuyNow = styled(buttons.StyledButton) `
 `
 
 const BuyIcon = styled(buttons.Icon) `
-  background-image: url('./images/buynow.png');
+  background-image: url(https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS@variables-sprite_2x-13acd72bb22e0c502de00d0afe21c494871da686._V2_.png);
+  background-position: -35px -60px;
+  background-size: 400px 900px;
 `
 class purchaseOptions extends React.Component {
   constructor(props) {

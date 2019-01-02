@@ -48,7 +48,7 @@ const ListModalContent = function(props) {
       </div>
       <LineBreak />
       <div style={{paddingBottom: '20px', fontSize: '20px', textAlign: 'center'}}>
-        <img style={{height: '50px', width: '48px', verticalAlign: 'middle'}} src={'./images/fancyamazon.png'}></img>
+        <img style={{height: '50px', width: '48px', verticalAlign: 'middle'}} src={'https://images-na.ssl-images-amazon.com/images/G/01/x-locale/communities/wishlist/uwl/UWL_aSmile._CB197586345_.png'}></img>
         <span style={{verticalAlign: 'middle', paddingLeft: '15px'}}>Add items from any website to your Amazon List</span>
         <buttons.StyledLink style={{fontSize: '16px', color: '#0055aa', paddingLeft: '10px'}}>Learn how</buttons.StyledLink>
       </div>

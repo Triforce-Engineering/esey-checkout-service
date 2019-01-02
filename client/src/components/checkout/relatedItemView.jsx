@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import buttons from './buttonStyles.jsx';
 import { Price } from './checkoutMain.jsx';
 import { AddToCartBtn } from './addToCart.jsx';
+import StarRating from './starRating.jsx';
 
 const RelatedItemDiv = styled.div`
   display: inline-block;
@@ -39,8 +40,8 @@ const RelatedItemView = function(props) {
       </buttons.StyledLink>
       </div>
       <div>
-        <div>
-          ****** ({props.relatedItem.numOfRatings})
+        <div style={{fontSize: '12px'}}>
+          <StarRating /> (<buttons.StyledLink>{props.relatedItem.numOfRatings}</buttons.StyledLink>)
         </div>
         <Price style={{color: '#900', fontSize: '16px'}}>${(props.relatedItem.price/100).toFixed(2)}</Price>
         <TinyAddToCartBtn>Add to Cart</TinyAddToCartBtn>

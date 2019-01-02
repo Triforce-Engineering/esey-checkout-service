@@ -58,7 +58,7 @@ const ListModalContainer = function(props) {
         <ModalBox>
           <Header>
             <HeaderText>Add to List</HeaderText>
-            <buttons.XClose onClick={props.handleClose}>x</buttons.XClose>
+            <buttons.XClose onClick={props.handleClose}></buttons.XClose>
           </Header>
           <ListModalContent item={props.item} relatedItems={props.relatedItems}/>
         </ModalBox>
