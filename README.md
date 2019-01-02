@@ -4,10 +4,10 @@
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/ChampsOfTheSun/vrtobar-service
+  - https://github.com/ChampsOfTheSun/reviews-service
+  - https://github.com/ChampsOfTheSun/makardjian-server
+  - https://github.com/ChampsOfTheSun/jhods16-proxy
 
 ## Table of Contents
 
@@ -18,6 +18,10 @@
 ## Usage
 
 > Some usage instructions
+
+  To seed the database: npm run seed (node database/seed.js),
+  To start the server: npm start (nodemon server/server.js),
+  To compile with webpack: npm run react-dev (webpack -d --watch),
 
 ## Requirements
 
@@ -34,6 +38,7 @@ From within the root directory:
 
 ```sh
 npm install -g webpack
+npm install -g nodemon
 npm install
 ```
 
