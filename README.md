@@ -20,8 +20,15 @@
 > Some usage instructions
   
   To seed the database: 
-    run schema.sql to create database
-    npm run seed (node database/seed.js),
+    - fill create config.js file inside the database directory with the following format:
+        module.exports = {
+          host: 'localhost',
+          database: 'sunchamps_dev',
+          user: *USER*
+          password: *PASSWORD*,
+        };
+    - run schema.sql to create database
+    - npm run seed (node database/seed.js),
   To start the server: npm start (nodemon server/server.js),
   To compile with webpack: npm run react-dev (webpack -d --watch),
 
