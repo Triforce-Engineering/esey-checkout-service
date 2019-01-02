@@ -18,8 +18,10 @@
 ## Usage
 
 > Some usage instructions
-
-  To seed the database: npm run seed (node database/seed.js),
+  
+  To seed the database: 
+    run schema.sql to create database
+    npm run seed (node database/seed.js),
   To start the server: npm start (nodemon server/server.js),
   To compile with webpack: npm run react-dev (webpack -d --watch),
 
