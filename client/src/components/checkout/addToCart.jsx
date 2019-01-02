@@ -22,7 +22,9 @@ const AddToCartBtn = styled(buttons.StyledButton) `
 `
 
 const CartIcon = styled(buttons.Icon) `
-  background-image: url('./images/cart.png');
+  background-position: -35px -5px;
+  background-image: url(https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS@variables-sprite_2x-13acd72bb22e0c502de00d0afe21c494871da686._V2_.png);
+  background-size: 400px 900px;
 `
 
 const AddToCart = function(props) {
