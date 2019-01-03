@@ -7,8 +7,18 @@ const bodyParser = require('body-parser');
 const db = require('../database/index.js');
 
 app.use(cors());
-app.use('/:id', express.static(path.join(__dirname, '/../client/dist')));
 app.use(bodyParser.json());
+
+app.get('/cart', (req, res) => {
+  db.connection.query('SELECT items.item_id, name, price, rating, numOfRatings, imgUrl FROM items INNER JOIN cartItems ON items.item_id = cartItems.item_id', (err, results) => {
+    if (err) {
+      return res.send(err);
+    }
+    res.send(results);
+  });
+});
+
+app.use('/:id', express.static(path.join(__dirname, '/../client/dist')));
 
 app.get('/items/:id', (req, res) => {
   db.connection.query(`SELECT * FROM items WHERE item_id = ${req.params.id}`, (err, results) => {
@@ -19,14 +29,6 @@ app.get('/items/:id', (req, res) => {
   });
 });
 // add a route to get just the review rating
-app.get('/cart', (req, res) => {
-  db.connection.query('SELECT items.item_id, name, price, rating, numOfRatings, imgUrl FROM items INNER JOIN cartItems ON items.item_id = cartItems.item_id', (err, results) => {
-    if (err) {
-      return res.send(err);
-    }
-    res.send(results);
-  });
-});
 
 app.get('/items/:id/related', (req, res) => {
   db.connection.query(`SELECT relatedItems FROM items where item_id = ${req.params.id}`, (err, results) => {
@@ -34,7 +36,7 @@ app.get('/items/:id/related', (req, res) => {
       return res.send(err);
     }
     let related = JSON.parse(results[0].relatedItems);
-
+    
     db.connection.query(`SELECT item_id, name, price, rating, numOfRatings, imgUrl FROM items WHERE item_id = ${related[0]} OR item_id = ${related[1]} OR item_id = ${related[2]}`, (err, results) => {
       if (err) {
         return res.send(err);
