@@ -4,6 +4,7 @@ import StockInfo from './stockInfo.jsx';
 import PurchaseOptions from './purchaseOptions.jsx';
 import AddToList from './addToList.jsx';
 import buttons from './buttonStyles.jsx';
+import SocialMedia from './socialMediaBtns.jsx';
 import $ from 'jquery';
 
 const StyledBox = styled.div `
@@ -102,7 +103,7 @@ class Checkout extends React.Component {
   render() {
     return (
       <div style={{fontFamily: 'Arial, sans-serif'}}>
-        <img src={'./images/socialmedia.png'} style={{width: '230px'}}></img>
+        <SocialMedia />
         <StyledBox>
           <Price>${(this.state.item.price/100).toFixed(2)}</Price>
           <PrimeLogo />
