@@ -24,7 +24,6 @@ const Price = styled.div `
 `
 const LineBreak = styled.hr `
   background-color: transparent;
-  border-top: 1px;
   border-top-color: #e7e7e7;
   margin-bottom: 14px;
 `
