@@ -29,7 +29,7 @@
           password: *PASSWORD*,
         }; 
         ```
-    - login to mysql and run schema.sql to create database
+    - npm run schema to create and use database 
     - npm run seed (node database/seed.js),
  1. To start the server: npm start (nodemon server/server.js),
  1. To compile with webpack: npm run react-dev (webpack -d --watch),
