@@ -26,6 +26,8 @@ for (let i = 0; i < 100; i += 1) {
   connection.query(`INSERT INTO items (name, price, stock, onList, rating, numOfRatings, relatedItems, imgUrl) values ('${name}', ${price}, ${stock}, ${onList}, ${rating}, ${numOfRatings}, '${relatedItems}', '${imgUrl}')`, (err) => {
     if (err) {
       console.error(err);
+    } else if (i === 99) {
+      console.log('seeded 100 items');
     }
   });
 }
