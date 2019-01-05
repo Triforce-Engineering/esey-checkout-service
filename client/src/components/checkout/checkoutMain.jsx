@@ -74,6 +74,7 @@ class Checkout extends React.Component {
     $.ajax({
       url: `http://localhost:3002/items/${window.location.href.split('/')[3]}`,
       method: 'GET',
+
       contentType: 'application/json',
       success: (results) => {
         this.setState({

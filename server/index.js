@@ -4,7 +4,7 @@ const app = express();
 const path = require('path');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const db = require('../database/index.js');
+const db = require('../database/seed.js');
 
 app.use(cors());
 app.use(bodyParser.json());
