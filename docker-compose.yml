@@ -11,3 +11,18 @@ services:
   database:
     build: database/
     restart: always
+
+
+# version: '2'
+
+# services:
+#   app:
+#     image: 'jhods16/sunchamps-checkout'
+#     depends_on:
+#       - 'database'
+#     ports: 
+#       - '3002:3002'
+
+#   database:
+#     image: 'jhods16/sunchamps-checkoutdb'
+#     restart: always
