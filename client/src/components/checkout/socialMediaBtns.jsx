@@ -30,7 +30,7 @@ const Pinterest = styled(Email)`
 
 const SocialMedia = function() {
   return (
-    <div style={{display: 'inline-block', marginLeft: '50px'}}>
+    <div style={{display: 'inline-block', marginLeft: '50px', marginBottom: '5px'}}>
       <buttons.StyledLink style={{marginRight: '5px'}}>Share</buttons.StyledLink>
       <Email />
       <Facebook />

@@ -8,8 +8,10 @@
     "node": ">=6.13.0"
   },
   "scripts": {
+    "schema": "mysql -uroot < database/schema.sql",
     "seed": "node database/seed.js",
-    "start": "nodemon server/server.js",
+    "start": "node server/server.js",
+    "build": "webpack --config webpack.prod.js",
     "react-dev": "webpack -d --watch",
     "lint": "./node_modules/.bin/eslint",
     "test": "jest --config ./spec/jest.config.json --detectOpenHandles"
@@ -39,7 +41,6 @@
     "enzyme-adapter-react-16": "^1.7.1",
     "eslint": "^5.10.0",
     "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
@@ -47,6 +48,7 @@
     "superagent": "^4.0.0",
     "supertest": "^3.3.0",
     "webpack": "^4.28.1",
-    "webpack-cli": "^3.1.2"
+    "webpack-cli": "^3.1.2",
+    "webpack-merge": "^4.1.5"
   }
 }
