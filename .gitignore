@@ -3,3 +3,6 @@ node_modules
 master_plan
 .DS_Store
 client/dist/bundle.js
+
+## csv files 
+*.csv

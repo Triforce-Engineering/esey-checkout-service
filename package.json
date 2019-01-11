@@ -8,8 +8,10 @@
     "node": ">=6.13.0"
   },
   "scripts": {
+    "postgres": "createdb checkout && psql checkout < ./postgresdb/schema.sql",
+    "postgres-gen": "node postgresdb/seedUtils/generateRecords.js ",
     "schema": "mysql -uroot < database/schema.sql",
-    "seed": "node database/seed.js",
+    "seed": "psql checkout < ./postgresdb/seedUtils/copyRecords.sql",
     "start": "node server/server.js",
     "build": "webpack --config webpack.prod.js",
     "react-dev": "webpack -d --watch",
