@@ -53,3 +53,45 @@ npm install -g nodemon
 npm install
 ```
 
+# API Endpoints
+### Get cart information for a single user
+#### GET /users/:userId/cart/
+This returns a JSON with following structure
+```
+{
+  user_id: (int)
+  cart: [
+          {
+             [item_id]:[number of items in cart]
+          }...
+        ]
+}
+```
+### Add an item to a single user's cart 
+#### PUT /users/:userId/cart/:itemId
+Body of the request should have a JSON object with following structure
+```
+{
+  item_id:(int)
+  count:(int) [number of items]
+}
+```
+
+### Remove item from a single user's cart
+#### DELETE /users/:userId/cart/:itemId
+
+### Purchase all items in a single user's cart
+#### POST /users/:userId/purchases
+
+### Get checkout relevant information(name, price, vendor and stock) for a single item 
+#### GET /items/:itemId
+This should return a JSON with the following structure
+```
+{
+  item_id:(int)
+  name:(String)
+  vendor:(string)
+  price:(decimal)
+  stock:(int)
+}
+```
