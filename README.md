@@ -85,6 +85,19 @@ Body of the request should have a JSON object with following structure
 
 ### Get checkout relevant information(name, price, vendor and stock) for a single item 
 #### GET /items/:itemId
+Gets cart relevant item information by item id
+This should return a JSON with the following structure
+```
+{
+  item_id:(int)
+  name:(String)
+  vendor:(string)
+  price:(decimal)
+  stock:(int)
+}
+```
+#### GET /items/search/?q=itemname
+Gets cart relevant item information by itemname
 This should return a JSON with the following structure
 ```
 {
