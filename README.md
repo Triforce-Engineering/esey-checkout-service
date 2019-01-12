@@ -105,8 +105,8 @@ This should return a JSON with the following structure
   stock:(int) 
 }
 ```
-#### GET /items/search/?q=itemname
-Gets cart relevant item information by itemname
+#### GET /items/search/?q=item-name
+Gets cart relevant item information by item name
 This should return a JSON with the following structure
 ```
 {
