@@ -68,6 +68,15 @@ This returns a JSON with following structure
 }
 ```
 ### Add an item to a single user's cart 
+#### POST /users/:userId/cart/:itemId
+Body of the request should have a JSON object with following structure
+```
+{
+  item_id:(int)
+  count:(int) [number of items]
+}
+```
+### Update the quantity of an item in a user's cart
 #### PUT /users/:userId/cart/:itemId
 Body of the request should have a JSON object with following structure
 ```
@@ -93,7 +102,7 @@ This should return a JSON with the following structure
   name:(String)
   vendor:(string)
   price:(decimal)
-  stock:(int)
+  stock:(int) 
 }
 ```
 #### GET /items/search/?q=itemname
