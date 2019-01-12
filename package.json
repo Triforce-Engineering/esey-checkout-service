@@ -11,7 +11,7 @@
     "postgres": "createdb checkout && psql checkout < ./postgresdb/schema.sql",
     "postgres-gen": "node postgresdb/seedUtils/generateRecords.js ",
     "schema": "mysql -uroot < database/schema.sql",
-    "schema-cassandra" : "cqlsh < ./cassandradb/schema.cql",
+    "schema-cassandra": "cqlsh < ./cassandradb/schema.cql",
     "cassandra-gen": "node ./cassandradb/seedUtils/generateRecords.js",
     "cassandra-seed": "cqlsh < ./cassandradb/seedUtils/copyRecords.cql",
     "seed": "psql checkout < ./postgresdb/seedUtils/copyRecords.sql",
@@ -25,9 +25,8 @@
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
-    "faker": "^4.1.0",
     "jquery": "^3.3.1",
-    "mysql": "^2.16.0",
+    "pg": "^7.8.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-router": "^4.3.1",
@@ -54,6 +53,7 @@
     "supertest": "^3.3.0",
     "webpack": "^4.28.1",
     "webpack-cli": "^3.1.2",
+    "faker": "^4.1.0",
     "webpack-merge": "^4.1.5"
   }
 }
