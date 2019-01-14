@@ -10,7 +10,6 @@
   "scripts": {
     "postgres": "createdb checkout && psql checkout < ./postgresdb/schema.sql",
     "postgres-gen": "node postgresdb/seedUtils/generateRecords.js ",
-    "schema": "mysql -uroot < database/schema.sql",
     "schema-cassandra": "cqlsh < ./cassandradb/schema.cql",
     "cassandra-gen": "node ./cassandradb/seedUtils/generateRecords.js",
     "cassandra-seed": "cqlsh < ./cassandradb/seedUtils/copyRecords.cql",
