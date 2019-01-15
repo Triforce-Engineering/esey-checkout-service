@@ -15,6 +15,7 @@
     "cassandra-seed": "cqlsh < ./cassandradb/seedUtils/copyRecords.cql",
     "seed": "psql checkout < ./postgresdb/seedUtils/copyRecords.sql",
     "start": "node server/server.js",
+    "server-dev": "nodemon server/server.js",
     "build": "webpack --config webpack.prod.js",
     "react-dev": "webpack -d --watch",
     "lint": "./node_modules/.bin/eslint",
@@ -48,12 +49,14 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
+    "faker": "^4.1.0",
     "jest": "^23.6.0",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.9",
     "superagent": "^4.0.0",
     "supertest": "^3.3.0",
     "webpack": "^4.28.1",
     "webpack-cli": "^3.1.2",
-    "faker": "^4.1.0",
     "webpack-merge": "^4.1.5"
   }
 }

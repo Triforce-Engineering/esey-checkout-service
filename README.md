@@ -70,7 +70,7 @@ Body of the request should have a JSON object with following structure
 ```
 {
   item_id:(int)
-  count:(int) [number of items]
+  quantity:(int) [number of items]
 }
 ```
 ### Update the quantity of an item in a user's cart
@@ -79,7 +79,7 @@ Body of the request should have a JSON object with following structure
 ```
 {
   item_id:(int)
-  count:(int) [number of items]
+  quantity:(int) [number of items]
 }
 ```
 
