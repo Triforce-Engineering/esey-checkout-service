@@ -8,7 +8,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "postgres": "createdb checkout && psql checkout < ./postgresdb/schema.sql",
+    "postgres": "node ./postgresdb/setupDB.js && psql checkout < ./postgresdb/schema.sql",
     "postgres-gen": "node postgresdb/seedUtils/generateRecords.js ",
     "schema-cassandra": "cqlsh < ./cassandradb/schema.cql",
     "cassandra-gen": "node ./cassandradb/seedUtils/generateRecords.js",
@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "body-parser": "^1.18.3",
+    "child_process": "^1.0.2",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "jquery": "^3.3.1",
