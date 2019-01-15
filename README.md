@@ -23,9 +23,6 @@
     - fill create config.js file inside the database directory with the following format:
        ```
        module.exports = {
-          host: 'localhost',
-          database: 'sunchamps_dev',
-          user: *USER*
           password: *PASSWORD*,
         }; 
         ```
