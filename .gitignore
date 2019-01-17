@@ -6,3 +6,6 @@ client/dist/bundle.js
 
 ## csv files 
 *.csv
+
+## log files
+*.log
