@@ -132,9 +132,9 @@ async function purchaseAllItems(userId, callback) {
         // rollback transaction
         return client.query('ROLLBACK', (errRollback) => {
           if (errRollback) {
-            return callback('Error Rolling back transaction', errRollback);
+            return callback({error: 'Error Rolling back transaction'});
           }
-          callback('Error making purchase', errPurchase);
+          callback({error: 'Error making purchase'});
         });
       }        
 
@@ -147,18 +147,18 @@ async function purchaseAllItems(userId, callback) {
         if (errClearCart) {
           return client.query('ROLLBACK', (errRollback, res) => {
             if (errRollback) {
-              return callback('Error Rolling back transaction', errRollback);
+              return callback({error: 'Error Rolling back transaction'});
             }
-            callback('Error making purchase' , errClearCart)
+            callback({error: {'Error making purchase'})
           });
         }
       
         // the transaction comp
         client.query('COMMIT', (errCommit) => {
           if (err) {
-            return callback('error commiting transaction', errCommit);
+            return callback({error: 'Error commiting transaction'});
           }
-          callback({ success: 'Items Purchased' });
+          callback(null, { success: 'Items Purchased' });
         });
       });
     });
