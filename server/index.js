@@ -50,15 +50,15 @@ app.get('/items/:itemId', (req, res) => {
 //   });
 // });
 
-app.post('/users/:userId/cart/:itemId', (req, res) => {
-  const { userId, itemId } = req.params;
-  const { quantity } = req.body;
+app.post('/users/:userId/cart', (req, res) => {
+  const { userId } = req.params;
+  const { quantity, itemId } = req.body;
   console.log(req.body)
   db.addItem(userId, itemId, quantity, (err, result) => {
     if (err) {
       return res.status(500).send(err);
     }
-    res.send(result);
+    res.status(201).send(result);
   });
 });
 
@@ -71,6 +71,27 @@ app.patch('/users/:userId/cart/:itemId', (req, res) => {
       return res.status(500).send(err);
     }
     res.send(result);
+  });
+});
+
+app.delete('/users/:userId/cart/:itemId', (req, res) => {
+  const { userId, itemId } = req.params;
+  db.deleteItem(userId, itemId, (err, result) => {
+    if (err) {
+      return res.status(500).send(err);
+    }
+    res.status(200).send(result);
+  });
+});
+
+app.post('/users/:userId/purchases', (req, res) => {
+  const { userId } = req.params;
+
+  db.purchaseAllItems(userId, (err, result) => {
+    if (err) {
+      return res.status(500).send(err);
+    }
+    res.status(201).send(result);
   });
 });
 

@@ -149,7 +149,7 @@ function purchaseAllItems(userId, callback) {
             if (errRollback) {
               return callback({error: 'Error Rolling back transaction'});
             }
-            callback({error: {'Error making purchase'})
+            callback({ error: 'Error making purchase' });
           });
         }
       
