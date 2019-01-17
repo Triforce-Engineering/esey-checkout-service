@@ -110,7 +110,7 @@ function getItemInfoByName(itemName, callback) {
 }
 
 // Purchase all items in a single user's cart
-async function purchaseAllItems(userId, callback) {
+function purchaseAllItems(userId, callback) {
   client.query('BEGIN', (err) => {
     if (err) { return callback(err); }
     const purchaseQuery = {
