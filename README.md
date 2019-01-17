@@ -65,7 +65,7 @@ This returns a JSON with following structure
 }
 ```
 ### Add an item to a single user's cart 
-#### POST /users/:userId/cart/:itemId
+#### POST /users/:userId/cart
 Body of the request should have a JSON object with following structure
 ```
 {
