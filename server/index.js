@@ -74,4 +74,15 @@ app.patch('/users/:userId/cart/:itemId', (req, res) => {
   });
 });
 
+app.post('/users/:userId/purchases', (req, res) => {
+  const { userId } = req.params;
+
+  db.purchaseAllItems(userId, (err, result) => {
+    if (err) {
+      return res.status(500).send(err);
+    }
+    res.status(201).send(result);
+  });
+});
+
 module.exports = app;
