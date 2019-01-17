@@ -38,10 +38,10 @@ class purchaseOptions extends React.Component {
 
   addToCart() {
     $.ajax({
-      url: `http://13.52.101.124:80/cart/${this.props.item.item_id}`,
+      url: `/users/0/cart/`,
       method: 'POST',
       contentType: 'application/json',
-      data: JSON.stringify({quantity: 4}),
+      data: JSON.stringify({quantity: 4, itemId: this.props.item.item_id}),
       success: () => {
         console.log('added to cart');
       },

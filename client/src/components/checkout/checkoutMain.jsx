@@ -72,16 +72,16 @@ class Checkout extends React.Component {
 
   componentDidMount() {
     $.ajax({
-      url: `http://13.52.101.124:80/items/${window.location.href.split('/')[3]}`,
+      url: `/items/${window.location.href.split('/')[4]}`,
       method: 'GET',
 
       contentType: 'application/json',
       success: (results) => {
         this.setState({
-          item: results[0]
+          item: results
         }, () => {
           $.ajax({
-            url: `http://13.52.101.124:80/items/${this.state.item.item_id}/related`,
+            url: `/items/${this.state.item.item_id}/related`,
             method: 'GET',
             contentType: 'application/json',
             success: (results) => {
