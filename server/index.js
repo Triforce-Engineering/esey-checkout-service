@@ -74,6 +74,16 @@ app.patch('/users/:userId/cart/:itemId', (req, res) => {
   });
 });
 
+app.delete('/users/:userId/cart/:itemId', (req, res) => {
+  const { userId, itemId } = req.params;
+  db.deleteItem(userId, itemId, (err, result) => {
+    if (err) {
+      return res.status(500).send(err);
+    }
+    res.status(200).send(result);
+  });
+});
+
 app.post('/users/:userId/purchases', (req, res) => {
   const { userId } = req.params;
 
