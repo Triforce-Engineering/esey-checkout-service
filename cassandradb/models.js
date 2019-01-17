@@ -14,14 +14,14 @@ client.connect((err) => {
 
 
 function getCart(userId, callback) {
-  const query = 'SELECT * FROM items WHERE item_id = ? ';
+  const query = 'SELECT cart FROM cart_by_userid WHERE user_id = ? ';
   client.execute(query, [userId], { hints:['int'] },  (err, res) => {
     if (err) {
       return callback(err);
     }
     callback(null, {
       user_id: userId,
-      cart: res.rows,
+      cart: res.rows[0].cart,
     });
 });
 }
