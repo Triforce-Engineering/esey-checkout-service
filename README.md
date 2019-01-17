@@ -102,15 +102,3 @@ This should return a JSON with the following structure
   stock:(int) 
 }
 ```
-#### GET /items/search/?q=item-name
-Gets cart relevant item information by item name
-This should return a JSON with the following structure
-```
-{
-  item_id:(int)
-  name:(String)
-  vendor:(string)
-  price:(decimal)
-  stock:(int)
-}
-```
