@@ -74,7 +74,7 @@ Body of the request should have a JSON object with following structure
 }
 ```
 ### Update the quantity of an item in a user's cart
-#### PUT /users/:userId/cart/:itemId
+#### PATCH /users/:userId/cart/:itemId
 Body of the request should have a JSON object with following structure
 ```
 {

@@ -62,7 +62,7 @@ app.post('/users/:userId/cart/:itemId', (req, res) => {
   });
 });
 
-app.put('/users/:userId/cart/:itemId', (req, res) => {
+app.patch('/users/:userId/cart/:itemId', (req, res) => {
   const { userId, itemId } = req.params;
   const { quantity } = req.body;
 
