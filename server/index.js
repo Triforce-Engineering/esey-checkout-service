@@ -15,7 +15,7 @@ app.get('/users/:userId/cart', (req, res) => {
   const { userId } = req.params;
   db.getCart(userId, (err, results) => {
     if (err) {
-      return res.send(err);
+      return res.status(500).send(err);
     }
     res.send(results);
   });
@@ -27,7 +27,7 @@ app.get('/items/:itemId', (req, res) => {
   const { itemId } = req.params;
   db.getItemInfo(itemId, (err, results) => {
     if (err) {
-      return res.send(err);
+      return res.status(500).send(err);
     }
     res.send(results);
   });
@@ -56,7 +56,7 @@ app.post('/users/:userId/cart/:itemId', (req, res) => {
   console.log(req.body)
   db.addItem(userId, itemId, quantity, (err, result) => {
     if (err) {
-      return res.send(err);
+      return res.status(500).send(err);
     }
     res.send(result);
   });
@@ -68,7 +68,7 @@ app.patch('/users/:userId/cart/:itemId', (req, res) => {
 
   db.incrementItemQuantity(userId, itemId, quantity, (err, result) => {
     if (err) {
-      return res.send(err);
+      return res.status(500).send(err);
     }
     res.send(result);
   });
