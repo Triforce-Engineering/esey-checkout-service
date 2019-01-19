@@ -2,6 +2,7 @@ const fs = require('fs');
 const faker = require('faker');
 
 function generateProducts() {
+    let start = Date.now();
     let item_id = 0;
     let fileName = './items.csv';
 
@@ -19,9 +20,12 @@ function generateProducts() {
         
     }while(total-=chunk)
     console.log('successfully wrote all items to csv');
+    console.log('time elapsed: ' + (Date.now() - start) / (1000 * 60) + 'minutes');
+
 };
 
 function generateCart() {
+    let start = Date.now();
     let fileName = './carts.csv';
     let cartCount = 1000000;
     let itemCount = 10000000;
@@ -39,6 +43,7 @@ function generateCart() {
         fs.appendFileSync(fileName, data);
     }while(cartCount -= chunk)
     console.log('successfully wrote all carts to csv');
+    console.log('time elapsed: ' + (Date.now() - start) / (1000 * 60) + 'minutes');
     
 }
 
