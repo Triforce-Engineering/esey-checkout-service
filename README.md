@@ -69,7 +69,7 @@ This returns a JSON with following structure
 Body of the request should have a JSON object with following structure
 ```
 {
-  item_id:(int)
+  itemId:(int)
   quantity:(int) [number of items]
 }
 ```
@@ -78,7 +78,6 @@ Body of the request should have a JSON object with following structure
 Body of the request should have a JSON object with following structure
 ```
 {
-  item_id:(int)
   quantity:(int) [number of items]
 }
 ```
