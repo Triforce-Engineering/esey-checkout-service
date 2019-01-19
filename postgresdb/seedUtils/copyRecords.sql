@@ -1,6 +1,15 @@
 TRUNCATE items CASCADE;
+ALTER table items DROP CONSTRAINT non_negative_stock;
 COPY items(item_id,name,vendor,price,stock)
-FROM '/mnt/c/Users/Admin/Desktop/hackreactor/jhods16-service/postgresdb/seedUtils/items.csv' DELIMITER '~' CSV HEADER;
+FROM '/mnt/c/Users/Admin/Desktop/hackreactor/esey-checkout-service/postgresdb/seedUtils/items.csv' DELIMITER '~' CSV HEADER;
+ALTER table items ADD CONSTRAINT non_negative_stock CHECK(stock >= 0);
+
 TRUNCATE carts;
+ALTER table carts DROP CONSTRAINT carts_item_id_fkey;
 COPY carts(user_id,item_id,quantity)
-FROM '/mnt/c/Users/Admin/Desktop/hackreactor/jhods16-service/postgresdb/seedUtils/carts.csv' DELIMITER '~' CSV HEADER;
+FROM '/mnt/c/Users/Admin/Desktop/hackreactor/esey-checkout-service/postgresdb/seedUtils/carts.csv' DELIMITER '~' CSV HEADER;
+
+ALTER TABLE carts 
+   ADD CONSTRAINT carts_item_id_fkey
+   FOREIGN KEY (item_id) 
+   REFERENCES items(item_id);
