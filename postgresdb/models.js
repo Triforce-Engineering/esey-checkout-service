@@ -1,9 +1,10 @@
 const { Pool } = require('pg');
-const postgresPassword = require('./config').password;
+const config = require('./config');
 
 const pool = new Pool({
   database: 'checkout',
-  password: postgresPassword,
+  password: config.password,
+  host: config.host,
   max: 200,
 });
 

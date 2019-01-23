@@ -1,12 +1,12 @@
 const { exec } = require('child_process');
-const postgressPassword = require('./config').password;
+const {password, host} = require('./config');
 
-if (postgressPassword === undefined) {
+if (password === undefined) {
     return console.error("please set password for postgres in config.js");
 }
 
 
-exec(`psql -c "ALTER USER ${process.env.USER} PASSWORD '${postgressPassword}'";`, (err, stdout, stderr) => {
+exec(`psql -h ${host} -c "ALTER USER ${process.env.USER} PASSWORD '${password}'";`, (err, stdout, stderr) => {
   if (err) {
     console.log("error setting postgres password for user: " + process.env.USER);
     console.log(stderr);
@@ -17,7 +17,7 @@ exec(`psql -c "ALTER USER ${process.env.USER} PASSWORD '${postgressPassword}'";`
   console.log(`stdout: ${stdout}`);
 });
 
-exec(`psql -c "CREATE DATABASE checkout";`, (err, stdout, stderr) => {
+exec(`psql -h ${host} -c "CREATE DATABASE checkout";`, (err, stdout, stderr) => {
   if (err) {
     console.log("Skip creating database: 'checkout' already exists no need to create it again");
     return;
