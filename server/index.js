@@ -10,7 +10,9 @@ const db = require('../postgresdb/models');
 app.use(cors());
 app.use(bodyParser.json());
 app.use(morgan('dev'));
-
+app.get('/loaderio-07ef218380e2f2c2834aa27fb02e1941/', (req, res)=> {
+  res.status(200).send('loaderio-07ef218380e2f2c2834aa27fb02e1941');
+})
 app.get('/users/:userId/cart', (req, res) => {
   const { userId } = req.params;
   db.getCart(userId, (err, results) => {

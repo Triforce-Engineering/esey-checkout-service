@@ -2,6 +2,7 @@ const { Pool } = require('pg');
 const config = require('./config');
 
 const pool = new Pool({
+  user: 'power_user',
   database: 'checkout',
   password: config.password,
   host: config.host,
