@@ -1,4 +1,5 @@
 const { Pool } = require('pg');
+const axios = require('axios');
 const config = require('./config');
 
 const pool = new Pool({
@@ -8,7 +9,7 @@ const pool = new Pool({
   host: config.host,
   max: 200,
 });
-
+const DATABASE_LB_HOST = 'localhost';
 
 //  Get cart information for a single user
 function getCart(userId, callback) {
@@ -104,20 +105,9 @@ function deleteItem(userId, itemId, callback) {
 
 // Get checkout relevant information(name, price, vendor and stock) for a single item
 function getItemInfo(itemId, callback) {
-  pool.connect((err, client, done) => {
-    const query = {
-      text: 'SELECT * FROM items WHERE item_id = $1',
-      values: [itemId],
-    };
-    client.query(query, (err, res) => {
-      if (err) {
-        done();
-        return callback(err);
-      }
-      callback(null, res.rows[0]);
-      done();
-    });
-  });
+  axios.get('http://' + DATABASE_LB_HOST + '/items/' + itemId)
+    .then(response => callback(null, response.data))
+    .catch(err => callback(err));
 }
 
 // Gets cart relevant item information by item name
@@ -140,67 +130,18 @@ function getItemInfoByName(itemName, callback) {
 
 // Purchase all items in a single user's cart
 function purchaseAllItems(userId, callback) {
-  pool.connect((err, client, done) => {
-    client.query('BEGIN', (err) => {
-      if (err) { done(); return callback(err); }
-      const purchaseQuery = {
-        text: `
-      UPDATE items 
-      SET stock = user_items.stock - user_items.quantity
-      FROM (
-        SELECT items.item_id, items.stock, user_cart.quantity FROM (
-          SELECT quantity, item_id FROM carts WHERE user_id = $1 
-          ) AS user_cart 
-          INNER JOIN items ON user_cart.item_id=items.item_id) AS user_items
-          WHERE items.item_id = user_items.item_id`,
-          values: [userId]
-        };
-        
-        client.query(purchaseQuery, (errPurchase, res) => {
-          if (errPurchase) {
-            // transaciton did not go through 
-            // rollback transaction
-            return client.query('ROLLBACK', (errRollback) => {
-              if (errRollback) {
-                done();
-                return callback({error: 'Error Rolling back transaction'});
-              }
-              done();
-              callback({error: 'Error making purchase'});
-            });
-          }        
-          
-          const clearCart = {
-            text: 'DELETE FROM carts WHERE user_id = $1',
-            values: [userId],
-          }
-          
-          client.query(clearCart, (errClearCart, res) => {
-            if (errClearCart) {
-              return client.query('ROLLBACK', (errRollback, res) => {
-                if (errRollback) {
-                  done();
-                  return callback({error: 'Error Rolling back transaction'});
-                }
-                callback({ error: 'Error making purchase' });
-                done();
-              });
-            }
-            
-            // the transaction comp
-            client.query('COMMIT', (errCommit) => {
-              if (err) {
-                done();
-                return callback({error: 'Error commiting transaction'});
-              }
-              callback(null, { success: 'Items Purchased' });
-              done();
-            });
-          });
-        });
-      });
-    })
-  }
+  getCart(userId, (err, results) => {
+    if (err) {
+      return callback(err);
+    }
+
+    const purchaseTuples = results.cart;
+    axios.post('http://' + DATABASE_LB_HOST + '/update', { purchaseTuples, userId })
+      .then(response => callback(null, response.data))
+      .catch(err => callback(err))
+      .then(() => pool.query('DELETE from carts WHERE user_id =' + userId));
+  });
+}
     
 module.exports = {
   pool,
