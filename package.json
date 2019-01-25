@@ -22,9 +22,10 @@
     "test": "jest --config ./spec/jest.config.json --detectOpenHandles"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
-    "child_process": "^1.0.2",
     "cassandra-driver": "^4.0.0",
+    "child_process": "^1.0.2",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "jquery": "^3.3.1",
